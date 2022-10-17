@@ -31,7 +31,7 @@ const ProcessData = async (req, res) => {
     console.log("-------------- final data ------------------");
     const googleSheetResponse = await axios.post(
       "https://script.google.com/macros/s/AKfycbzO4pL6HQLCVgg1v3fBWFPiOBJ8f9NjGzzQNWKgCjacilky_5N_XSNSbR1IBrh6p1eu/exec?gid=1774646088",
-      req.data
+      data
     );
     console.log(
       "------------------ response from google sheet ------------------------"

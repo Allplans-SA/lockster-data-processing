@@ -6,16 +6,16 @@ const ProcessData = async (req, res) => {
     console.log(req.body);
     console.log("---------------- got request --------------------------");
     const data = req.body;
-    const gettingCustomerDetails = await axios.get(
-      `${bloqitBaseUrl}/customers/${data.customer}`,
-      {
-        headers: {
-          "x-api-key":
-            "Ygpm3+i4kd3mTHyM.YgdUVcf8fMmwQYHiSi8rtTZizU5yDedR2YQNeDgK/yk=",
-        },
-      }
-    );
-    data.customer = gettingCustomerDetails.data;
+    // const gettingCustomerDetails = await axios.get(
+    //   `${bloqitBaseUrl}/customers/${data.customer}`,
+    //   {
+    //     headers: {
+    //       "x-api-key":
+    //         "Ygpm3+i4kd3mTHyM.YgdUVcf8fMmwQYHiSi8rtTZizU5yDedR2YQNeDgK/yk=",
+    //     },
+    //   }
+    // );
+    // data.customer = gettingCustomerDetails.data;
     const gettingRentDetails = await axios.get(
       `${bloqitBaseUrl}/rents/${data.rent}`,
       {

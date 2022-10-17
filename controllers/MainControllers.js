@@ -15,7 +15,7 @@ const ProcessData = async (req, res) => {
         },
       }
     );
-    // data.customer = gettingCustomerDetails;
+    data.customer = gettingCustomerDetails.data;
     const gettingRentDetails = await axios.get(
       `${bloqitBaseUrl}/rents/${data.rent}`,
       {
@@ -25,13 +25,21 @@ const ProcessData = async (req, res) => {
         },
       }
     );
-    console.log({ gettingCustomerDetails, gettingRentDetails });
-    // data.rent = gettingRentDetails;
+    data.rent = gettingRentDetails.data;
+    console.log("-------------- final data ------------------");
+    console.log(data);
+    console.log("-------------- final data ------------------");
     const googleSheetResponse = await axios.post(
       "https://script.google.com/macros/s/AKfycbzO4pL6HQLCVgg1v3fBWFPiOBJ8f9NjGzzQNWKgCjacilky_5N_XSNSbR1IBrh6p1eu/exec?gid=1774646088",
       req.data
     );
-
+    console.log(
+      "------------------ response from google sheet ------------------------"
+    );
+    console.log(googleSheetResponse.data);
+    console.log(
+      "------------------ response from google sheet ------------------------"
+    );
     res.status(200).json({
       msg: "Data Added",
       addedData: req.body,

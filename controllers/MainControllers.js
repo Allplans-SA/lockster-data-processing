@@ -26,6 +26,19 @@ const ProcessData = async (req, res) => {
       }
     );
     data.rent = gettingRentDetails.data;
+
+    delete data.rent.pricing;
+    delete data.rent.customer;
+    delete data.rent.externalID;
+    delete data.rent.states;
+    delete data.rent.pickUpNotificationSent;
+    delete data.rent.dropOffNotificationSent;
+    delete data.rent.notificationOptions;
+    delete data.rent.unsuccessful;
+    delete data.rent.promotion;
+    delete data.rent.locker;
+    delete data.codeName;
+    delete data.description;
     console.log("-------------- final data ------------------");
     console.log(data);
     console.log("-------------- final data ------------------");

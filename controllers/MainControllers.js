@@ -36,7 +36,12 @@ const ProcessData = async (req, res) => {
     delete data.rent.notificationOptions;
     delete data.rent.unsuccessful;
     delete data.rent.promotion;
-    delete data.rent.locker;
+    delete data.rent.locker.bloq._id;
+    delete data.rent.locker.bloq.price;
+    delete data.rent.locker.bloq.lockers;
+    delete data.rent.locker.bloq.id;
+    delete data.rent.bloq;
+    delete data.rent.details;
     delete data.codeName;
     delete data.description;
     console.log("-------------- final data ------------------");

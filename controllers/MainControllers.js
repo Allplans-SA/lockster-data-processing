@@ -39,6 +39,8 @@ const ProcessData = async (req, res) => {
     );
     data.rent = gettingRentDetails.data;
 
+    delete actionInitiatedBy._id;
+    delete actionInitiatedBy.source;
     delete data.rent.pricing;
     delete data.rent.customer;
     delete data.rent.externalID;
@@ -50,6 +52,10 @@ const ProcessData = async (req, res) => {
     delete data.rent.promotion;
     if (data.rent.locker) {
       delete data.rent.locker.bloq._id;
+      delete data.rent.locker.bloq.location;
+      delete data.rent.locker.bloq.supports;
+      delete data.rent.locker.bloq.objectDetection;
+      delete data.rent.locker.bloq.lastDoorOpeningTimestamp;
       delete data.rent.locker.bloq.price;
       delete data.rent.locker.bloq.lockers;
       delete data.rent.locker.bloq.id;

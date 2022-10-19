@@ -20,8 +20,8 @@ const ProcessData = async (req, res) => {
         _id: "--",
         createdAt: "--",
       };
-      data.customer._id = gettingCustomerDetails._id;
-      data.customer.createdAt = gettingCustomerDetails.createdAt;
+      data.customer._id = gettingCustomerDetails.data._id;
+      data.customer.createdAt = gettingCustomerDetails.data.createdAt;
     } else {
       data.customer = {
         _id: "--",
@@ -39,7 +39,7 @@ const ProcessData = async (req, res) => {
     );
     data.rent = gettingRentDetails.data;
 
-    delete data.actionInitiatedBy._id;
+    delete data.actionInitiatedBy.id;
     delete data.actionInitiatedBy.source;
     delete data.rent.pricing;
     delete data.rent.customer;

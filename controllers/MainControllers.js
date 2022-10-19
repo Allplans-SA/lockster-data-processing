@@ -6,16 +6,28 @@ const ProcessData = async (req, res) => {
     console.log(req.body);
     console.log("---------------- got request --------------------------");
     const data = req.body;
-    // const gettingCustomerDetails = await axios.get(
-    //   `${bloqitBaseUrl}/customers/${data.customer}`,
-    //   {
-    //     headers: {
-    //       "x-api-key":
-    //         "Ygpm3+i4kd3mTHyM.YgdUVcf8fMmwQYHiSi8rtTZizU5yDedR2YQNeDgK/yk=",
-    //     },
-    //   }
-    // );
-    // data.customer = gettingCustomerDetails.data;
+    if (data.customer) {
+      const gettingCustomerDetails = await axios.get(
+        `${bloqitBaseUrl}/customers/${data.customer}`,
+        {
+          headers: {
+            "x-api-key":
+              "Ygpm3+i4kd3mTHyM.YgdUVcf8fMmwQYHiSi8rtTZizU5yDedR2YQNeDgK/yk=",
+          },
+        }
+      );
+      data.customer = {
+        _id: "--",
+        createdAt: "--",
+      };
+      data.customer._id = gettingCustomerDetails._id;
+      data.customer.createdAt = gettingCustomerDetails.createdAt;
+    } else {
+      data.customer = {
+        _id: "--",
+        createdAt: "--",
+      };
+    }
     const gettingRentDetails = await axios.get(
       `${bloqitBaseUrl}/rents/${data.rent}`,
       {
@@ -36,10 +48,12 @@ const ProcessData = async (req, res) => {
     delete data.rent.notificationOptions;
     delete data.rent.unsuccessful;
     delete data.rent.promotion;
-    delete data.rent.locker.bloq._id;
-    delete data.rent.locker.bloq.price;
-    delete data.rent.locker.bloq.lockers;
-    delete data.rent.locker.bloq.id;
+    if (data.rent.locker) {
+      delete data.rent.locker.bloq._id;
+      delete data.rent.locker.bloq.price;
+      delete data.rent.locker.bloq.lockers;
+      delete data.rent.locker.bloq.id;
+    }
     delete data.rent.bloq;
     delete data.rent.details;
     delete data.codeName;

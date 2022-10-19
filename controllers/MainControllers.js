@@ -39,8 +39,8 @@ const ProcessData = async (req, res) => {
     );
     data.rent = gettingRentDetails.data;
 
-    delete actionInitiatedBy._id;
-    delete actionInitiatedBy.source;
+    delete data.actionInitiatedBy._id;
+    delete data.actionInitiatedBy.source;
     delete data.rent.pricing;
     delete data.rent.customer;
     delete data.rent.externalID;

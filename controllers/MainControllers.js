@@ -39,31 +39,31 @@ const ProcessData = async (req, res) => {
     );
     data.rent = gettingRentDetails.data;
 
-    delete data.actionInitiatedBy.id;
-    delete data.actionInitiatedBy.source;
-    delete data.rent.pricing;
-    delete data.rent.customer;
-    delete data.rent.externalID;
-    delete data.rent.states;
-    delete data.rent.pickUpNotificationSent;
-    delete data.rent.dropOffNotificationSent;
-    delete data.rent.notificationOptions;
-    delete data.rent.unsuccessful;
-    delete data.rent.promotion;
-    if (data.rent.locker) {
-      delete data.rent.locker.bloq._id;
-      delete data.rent.locker.bloq.location;
-      delete data.rent.locker.bloq.supports;
-      delete data.rent.locker.bloq.objectDetection;
-      delete data.rent.locker.bloq.lastDoorOpeningTimestamp;
-      delete data.rent.locker.bloq.price;
-      delete data.rent.locker.bloq.lockers;
-      delete data.rent.locker.bloq.id;
+    delete data?.actionInitiatedBy?.id;
+    delete data?.actionInitiatedBy?.source;
+    delete data?.rent?.pricing;
+    delete data?.rent?.customer;
+    delete data?.rent?.externalID;
+    delete data?.rent?.states;
+    delete data?.rent?.pickUpNotificationSent;
+    delete data?.rent?.dropOffNotificationSent;
+    delete data?.rent?.notificationOptions;
+    delete data?.rent?.unsuccessful;
+    delete data?.rent?.promotion;
+    if (data?.rent?.locker) {
+      delete data?.rent?.locker?.bloq?._id;
+      delete data?.rent?.locker?.bloq?.location;
+      delete data?.rent?.locker?.bloq?.supports;
+      delete data?.rent?.locker?.bloq?.objectDetection;
+      delete data?.rent?.locker?.bloq?.lastDoorOpeningTimestamp;
+      delete data?.rent?.locker?.bloq?.price;
+      delete data?.rent?.locker?.bloq?.lockers;
+      delete data?.rent?.locker?.bloq?.id;
     }
-    delete data.rent.bloq;
-    delete data.rent.details;
-    delete data.codeName;
-    delete data.description;
+    delete data?.rent?.bloq;
+    delete data?.rent?.details;
+    delete data?.codeName;
+    delete data?.description;
     console.log("-------------- final data ------------------");
     console.log(data);
     console.log("-------------- final data ------------------");

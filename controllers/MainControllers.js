@@ -2,6 +2,7 @@ const axios = require("axios");
 const { bloqitBaseUrl } = require("../utils/Baseurls");
 const ProcessData = async (req, res) => {
   try {
+    var sheetNo = "775220249";
     console.log("---------------- got request --------------------------");
     console.log(req.body);
     console.log("---------------- got request --------------------------");
@@ -68,13 +69,14 @@ const ProcessData = async (req, res) => {
     console.log(data);
     console.log("-------------- final data ------------------");
     const googleSheetResponse = await axios.post(
-      "https://script.google.com/macros/s/AKfycbzO4pL6HQLCVgg1v3fBWFPiOBJ8f9NjGzzQNWKgCjacilky_5N_XSNSbR1IBrh6p1eu/exec?gid=1774646088",
+      `https://script.google.com/macros/s/AKfycbzO4pL6HQLCVgg1v3fBWFPiOBJ8f9NjGzzQNWKgCjacilky_5N_XSNSbR1IBrh6p1eu/exec?gid=${sheetNo}`,
       data
     );
     console.log(
       "------------------ response from google sheet ------------------------"
     );
     console.log(googleSheetResponse.data);
+    console.log(`logged in sheet - ${sheetNo}`);
     console.log(
       "------------------ response from google sheet ------------------------"
     );

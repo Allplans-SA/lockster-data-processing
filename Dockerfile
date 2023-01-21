@@ -4,10 +4,11 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
+RUN npm install pm2 -g
 RUN npm install 
 
 COPY . .
 
-EXPOSE 8080
+EXPOSE 4000
 
-CMD ["npm","index.js"]
+CMD ["pm2-runtime","index.js"]

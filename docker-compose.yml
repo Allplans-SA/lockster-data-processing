@@ -1,0 +1,15 @@
+version: '3.1'
+services:
+  lockster:
+    container_name: 'lockster'
+    image: akshaygondhale/lockster:1.0
+    ports:
+      - 41257:4000
+    networks:
+      abslm-network:
+        ipv4_address: 10.100.25.1
+
+networks:
+  abslm-network:
+    external: true
+    name: abslm-network
